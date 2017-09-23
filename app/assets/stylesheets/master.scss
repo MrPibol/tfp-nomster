@@ -35,3 +35,16 @@ body{
     font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
 
 }
+
+/*color for Kaminari bar pagination */
+.page-item.active .page-link{
+    color:#fff;
+    background-color: #000000;
+    border-color: #000000;
+}
+
+.page-link {
+    color: #0c0c0c;
+    background-color: #fff;
+    border-color: #000000;
+}
