@@ -65,3 +65,5 @@ gem 'kaminari', :git => 'https://github.com/kaminari/kaminari'
 
 # SimpleForm
 gem 'simple_form'
+# Font Awesome -> icon library
+gem 'font-awesome-rails'
