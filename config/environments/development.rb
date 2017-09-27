@@ -51,4 +51,9 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  
+  # devise functionality: if our users forget their password they can reset it through an automated email. 
+  #Configuring our mailer so it knows how to build the urls.
+  config.action_mailer.default_url_options = {host:'https//tfp-web-dev-mrpibol.c9users.io'}
+  
 end
