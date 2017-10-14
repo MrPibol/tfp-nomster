@@ -69,3 +69,7 @@ gem 'simple_form'
 gem 'font-awesome-rails'
 # Authentication gem
 gem 'devise'
+# Gecode gem
+gem 'geocoder'
+#Figaro gem -> ENV variables
+gem 'figaro'
