@@ -66,3 +66,7 @@ html, body {
         margin: 0;
         padding: 0;
 }
+/* CSS associated with Comment Form -  it's not supposed to fill in blank space to the right of the last element.*/
+.clear{
+    clear: both;
+}
