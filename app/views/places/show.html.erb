@@ -32,27 +32,55 @@
         <% end %>
     </div>
     <br />
-    <div class="clear">
-      <h2>Enter Your Comment</h2>
-      <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
-        <%= f.input :message%>
-        <%= f.input :rating, as: :select, label: 'Rating', include_blank: :false,  collection: Comment::RATINGS%>
-        <br />
-        <%= f.submit 'Add a Comment', class:'btn btn-primary'%>
-      <% end %>
-    </div>
+    
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+      Add a Comment
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Enter Your Comment</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="clear">
+            <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
+              <div class="modal-body">
+                <%= f.input :message%>
+                <%= f.input :rating, as: :select, label: 'Rating', include_blank: :false,  collection: Comment::RATINGS%>
+                <br />
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                <%= f.submit 'Add a Comment', class:'btn btn-primary'%>
+              </div>
+            <% end %>
+          </div>
+          
+        </div>
+      </div>
+    </div>   
+    
+    <br />
+    <br />
     
       <h1>Comments</h1>
       <%  @place.comments.each do |comment| %>
       <div>
-        <blockquote>
+        <blockquote class="blockquote">
           <% if comment.humanized_rating.present? %>
             <b><%= comment.humanized_rating %></b>
           <% end %>
           <%= comment.message %>
-          <small> <%= comment.user.email %> </small>
+          <small class="blockquote-footer"> <%= comment.user.email %> </small>
         </blockquote>
       </div>
       <% end %>
-    
+
 </div>
