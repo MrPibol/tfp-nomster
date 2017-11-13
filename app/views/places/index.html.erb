@@ -3,11 +3,22 @@
     <h1><%= link_to place.name, place_path(place) %></h1>
     <i><%= place.address %></i><br /><br />
     <p><%= place.description %></p><br />
-</div>
+
     <% if place.user.present? %>
         <small><%= place.user.email %></small>
     <% end %>
-<% end %>
+
+  <div class="col-12 col-sm-6">
+    <blockquote class="blockquote">
+      <% if place.comments.last.humanized_rating.present? %>
+        <b><%= place.comments.last.humanized_rating %></b>
+      <% end %>
+      <%= place.comments.last.message %>
+      <small class="blockquote-footer"> <%= place.comments.last.user.email %> </small>
+    </blockquote>
+  </div>
+</div>
+<% end %>      
 <hr />
 <%= paginate @places %>
 <!--<%= page_entries_info @places %>-->
