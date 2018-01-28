@@ -73,3 +73,7 @@ gem 'devise'
 gem 'geocoder'
 #Figaro gem -> ENV variables
 gem 'figaro'
+#carrierwave
+gem 'carrierwave'
+#First in order for carrierwave to be able to communicate with Amazon S3, it needs to have the fog gem in the project. 
+gem 'fog-aws'
