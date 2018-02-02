@@ -53,7 +53,21 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
   # devise functionality: if our users forget their password they can reset it through an automated email. 
-  #Configuring our mailer so it knows how to build the urls.
+  #Configuring our mailer so it knows how to build the urls.  
+  
+  #The first section is for setting up a Gmail account as the medium for sending email from dev
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "example.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV['GMAIL_ADDRESS'],
+    password: ENV['GMAIL_PASSWORD']
+  }
   config.action_mailer.default_url_options = {host:'https//tfp-web-dev-mrpibol.c9users.io'}
   
 end
