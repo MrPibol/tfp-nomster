@@ -68,6 +68,6 @@ Rails.application.configure do
     user_name: ENV['GMAIL_ADDRESS'],
     password: ENV['GMAIL_PASSWORD']
   }
-  config.action_mailer.default_url_options = {host:'https//tfp-web-dev-mrpibol.c9users.io'}
+  config.action_mailer.default_url_options = {host:'tfp-web-dev-mrpibol.c9users.io'}
   
 end
