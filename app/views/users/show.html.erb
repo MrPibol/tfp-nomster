@@ -6,6 +6,7 @@
                 <%= image_tag 'user.png' %>
             </div>
             <div class="col-8">
+                <br />
                 <h2><%= @user.email%></h2>
                 <h3>Member Since: <%= @user.created_at.strftime("%B %d, %Y")%></h3>
                 <h4><%=@user.comments.count%> total comments</h4>
@@ -17,9 +18,12 @@
    
     <div class="clear">
         <h2 class="text-center">My Comments</h2>
+        <br /><br />
         <div class="row">
+            <% current_user.comments.each do |comment| %>
+ 
             <div class="col-12 col-sm-6">
-                <% current_user.comments.each do |comment| %>
+                <h2 class="text-center"><%= link_to comment.place.name, place_path(comment.place)%></h2>
                      <blockquote class="blockquote">
                           <% if comment.humanized_rating.present? %>
                             <b><%= comment.humanized_rating %></b>
@@ -27,9 +31,38 @@
                           <%= comment.message %>
                           <small class="blockquote-footer"> <%= comment.user.email %> </small>
                     </blockquote>
-                    <br />
-                <% end %>
             </div>
+            <% end %>
         </div>
     </div>
+    
+    <div class="clear">
+        <br /><br />
+        <h2 class="text-center">My Places</h2>
+        <br /><br />
+        <div class="row">
+            <% current_user.places.each do |place|%>
+                <div class="booyah-box col-10 offset-1">
+                    <h1><%= link_to place.name, place_path(place) %></h1>
+                    <i><%= place.address %></i><br /><br />
+                    <p><%= place.description %></p><br />
+    
+                    <% if place.user.present? %>
+                        <small><%= place.user.email %></small>
+                    <% end %>
+    
+                    <div class="col-12 col-sm-6">
+                         <% if place.comments.present? %>
+                            <blockquote class="blockquote">
+                              <% if place.comments.last.humanized_rating.present? %>
+                                <b><%= place.comments.last.humanized_rating %></b>
+                              <% end %>
+                              <%= place.comments.last.message %>
+                              <small class="blockquote-footer"> <%= place.comments.last.user.email %> </small>
+                          </blockquote>
+                        <% end %>
+                    </div>
+                </div>
+            <%end%>
+        </div>
 </div>
